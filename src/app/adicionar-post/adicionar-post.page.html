@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>adicionarPost</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #formCadastroPost="ngForm" (ngSubmit)="onSubmit(formCadastroPost)">
+    <ion-item>
+      <ion-label>Titulo:</ion-label>
+      <ion-input type="text" [(ngModel)]="post.title" name="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Conteudo:</ion-label>
+      <ion-textarea [(ngModel)]="post.body" name="body"></ion-textarea>
+    </ion-item>
+    <button ion-button type="submit" block>Postar</button>
+  </form>
+</ion-content>

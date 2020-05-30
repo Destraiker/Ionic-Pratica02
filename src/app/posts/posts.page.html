@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>posts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-progress-bar type="indeterminate" *ngIf="statusBarra==true"></ion-progress-bar>
+  <ion-fab vertical="bottom"  [routerLink]="['/adicionar-post']" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-grid *ngFor="let post of postsPage">
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{post.title}}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            {{post.body}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Carregar mais posts...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
